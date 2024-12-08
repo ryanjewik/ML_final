@@ -4,14 +4,87 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Valorant Dashboard</title>
+    <style>
+        body {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding: 20px;
+            background-color: #0f1923;
+            color: #ffffff;
+            font-family: 'Arial', sans-serif;
+        }
+        .left-column {
+            flex: 1;
+            max-width: 30%;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .right-column {
+            flex: 2;
+            max-width: 65%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        .graph-container {
+            background-color: #1c2a3a;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            margin-bottom: 20px;
+        }
+        h2 {
+            color: #ff4655;
+        }
+        img {
+            width: 100%;
+            height: auto;
+        }
+        .upload-container {
+            background-color: #1c2a3a;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            text-align: center;
+        }
+        .upload-container input[type="file"] {
+            display: none;
+        }
+        .upload-container label {
+            background-color: #ff4655;
+            color: #ffffff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-    <h1>Valorant Dashboard</h1>
-    <h2>Top 3 Agents by Win/Loss Ratio</h2>
-    <img src="data:image/png;base64,{{ agent_graph }}" alt="Top 3 Agents">
-    <h2>Top 3 Maps by Win/Loss Ratio</h2>
-    <img src="data:image/png;base64,{{ map_graph }}" alt="Top 3 Maps">
-    <h2>KDR Over Time</h2>
-    <img src="data:image/png;base64,{{ timeseries_graph }}" alt="Valorant Rank 30 Day Prediction">
+    <div class="left-column">
+        <div class="graph-container">
+            <h2>Top 3 Agents by Win/Loss Ratio</h2>
+            <img src="data:image/png;base64,{{ agent_graph }}" alt="Top 3 Agents">
+        </div>
+        <div class="graph-container">
+            <h2>Top 3 Maps by Win/Loss Ratio</h2>
+            <img src="data:image/png;base64,{{ map_graph }}" alt="Top 3 Maps">
+        </div>
+    </div>
+    <div class="right-column">
+        <div class="graph-container">
+            <h2>Valorant 30 Day Rank Prediction</h2>
+            <img src="data:image/png;base64,{{ timeseries_graph }}" alt="Valorant 30 Day Rank Prediction">
+        </div>
+        <div class="upload-container">
+            <form action="/upload" method="post" enctype="multipart/form-data">
+                <label for="file-upload">Upload your CSV</label>
+                <input id="file-upload" type="file" name="file">
+                <button type="submit">Upload</button>
+            </form>
+        </div>
+    </div>
 </body>
 </html>
