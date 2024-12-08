@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valorant Dashboard</title>
+</head>
+<body>
+    <h1>Valorant Dashboard</h1>
+    <h2>Top 3 Agents by Win/Loss Ratio</h2>
+    <img src="data:image/png;base64,{{ agent_graph }}" alt="Top 3 Agents">
+    <h2>Top 3 Maps by Win/Loss Ratio</h2>
+    <img src="data:image/png;base64,{{ map_graph }}" alt="Top 3 Maps">
+    <h2>KDR Over Time</h2>
+    <img src="data:image/png;base64,{{ timeseries_graph }}" alt="KDR Over Time">
+</body>
+</html>
